@@ -1,0 +1,11 @@
+footer{
+    background-color: var(--clr-dark);
+    color: var(---clr-light);
+    text-align: center;
+    min-height: 4rem;
+    display: grid;
+    place-items: center;
+}
+small {
+    color: white;
+}
