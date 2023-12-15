@@ -5,7 +5,7 @@
 
   --clr-light: rgba(255, 255, 255);
   --clr-dark: #242424;
-  --clr-accent: darkred;
+  --clr-accent: #8b0000;
 
   --max-width: 1200px;
 
@@ -18,13 +18,21 @@
 
 a {
   font-weight: 500;
-  color: var(--clr-light);
+  color: var(--clr-dark);
   text-decoration: inherit;
 }
 a:hover {
   color: var(--clr-light);
 }
 
+.card-link {
+  all: unset;
+  cursor: pointer;
+}
+.card-link:hover {
+  all: unset;
+  cursor: pointer;
+}
 body {
   margin: 0;
   font-family: var(--ff-primary);
@@ -55,4 +63,3 @@ h1, h2, h3, h4, h5, p {
   min-height: calc(100vh - 2.2rem);
   background-color: #747bff;
 }
-

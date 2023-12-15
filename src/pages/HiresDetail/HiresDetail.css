@@ -1,0 +1,31 @@
+.hiresdetail__section{
+    margin-top: 3.2rem;
+}
+
+.hiresdetail__container {
+    min-height: calc(100vh - 7.2rem);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    place-items: center;
+    margin-inline: auto;
+    max-width: var(--max-width);
+    outline: 2px solid red;
+}
+.hiresdetail__column{
+    width: 90%;
+    padding: 1rem;
+}
+
+.hiresdetail__image {
+    width: 100%;
+}
+
+.hiresdetail__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    padding: 1rem;
+    gap: 1rem;
+}

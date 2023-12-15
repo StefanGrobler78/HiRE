@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    background-color: lightsalmon;
+    height: 3rem;
+}
+.site-logo {
+    margin-left: 1rem;
+}
+nav {
+    display: flex;
+    gap: 3rem;
+    margin-right: 1rem;
+}

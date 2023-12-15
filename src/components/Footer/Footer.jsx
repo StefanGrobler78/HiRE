@@ -3,7 +3,7 @@ import './Footer.css'
 const Footer = () => {
   return (
     <footer>
-       <small>Ⓒ 2022 #HiRE</small>
+       <small>&#169; 2023 #HiRE</small>
     </footer>
   )
 }

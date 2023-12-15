@@ -14,7 +14,7 @@ const Navbar = () => {
                   <ul className="sbe__prim-navlist">
                   
                     <Link to='/about'>About</Link>
-                    <Link to='/vans'>Vans</Link>
+                    <Link to='/hires'>Hires</Link>
 
                   </ul>
                 </nav>
@@ -27,7 +27,7 @@ const Navbar = () => {
                       <div className="sbe__prim-nav_menu">
                         <ul className="sbe__prim-navlist">
                           <Link to='/about'>About</Link>
-                          <Link to='/vans'>Vans</Link>
+                          <Link to='/hires'>Hires</Link>
                         </ul>
                       </div>
                     )
