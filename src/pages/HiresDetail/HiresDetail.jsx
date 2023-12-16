@@ -27,7 +27,9 @@ const HiresDetail = () => {
 
 
     if (loading) {
-        console.log('Loading');
+        <div className="loading">
+        <h1>Loading</h1>
+      </div>
     } else {
         
         return (
