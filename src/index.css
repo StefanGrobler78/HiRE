@@ -142,3 +142,37 @@ h1, h2, h3, h4, h5, p {
   place-items: center;
   min-height: 300px;
 }
+
+/* DASHBOARD */
+
+.dashboard__container{
+  min-height: 100vh;
+  margin: 1rem;
+}
+.dashboard__content-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.dashboard__spaced-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(33, 53, 71, 0.5);
+  min-height: 100px;
+}
+
+
+.hires_btn{
+  max-width: 120px;
+  display: grid;
+  place-items: center;
+  padding: .5rem 1.25rem;
+  border-radius: .345rem;
+  color: white;
+}

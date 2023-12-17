@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const HostVans = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
-
+    
 
     useEffect(() => {
       async function fetchData() {
@@ -33,7 +33,7 @@ const HostVans = () => {
       data.map((hire) => {
       return (
         <div key={hire.id}>
-          <Link  to={`/host/vans/${hire.id}`}>
+          <Link  to={`${hire.id}`}>
             <div className="listVans__container">
               <img src={hire.imageUrl} alt="" />
               <div className="listVans__text-container">

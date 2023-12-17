@@ -28,6 +28,15 @@ const HostVanDetail = () => {
     )
   }else{
     const activeStyles = {textDecoration: 'underline', fontWeight: 'Bold', color: '#109876'}
+    const colors = (type) => {
+      if (type === "simple") {
+          return "red"
+      } else if (type === "luxury") {
+          return "blue"
+      } else {
+         return "green"
+      }
+  }
     return (
       <div>
         <h1>Van List Details</h1>
@@ -40,7 +49,9 @@ const HostVanDetail = () => {
                         <img className="hostdetail__image" src={data.imageUrl} alt="" />
                     </div>
                     <div className="hostdetail__content">
-                        <i className="hostdetail__type">{data.type}</i>
+                        <p className="hostdetail__type"
+                          style={{backgroundColor: colors(data.type)}}
+                        >{data.type}</p>
                         <h2>{data.name}</h2>
                         <p>${data.price}/day</p>
                     </div>

@@ -6,7 +6,16 @@ const HiresDetail = () => {
     const params = useParams()
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
-    
+
+    const colors = (type) => {
+        if (type === "simple") {
+            return "red"
+        } else if (type === "luxury") {
+            return "blue"
+        } else {
+           return "green"
+        }
+    }
 
     React.useEffect(() => {
         async function fetchData() {
@@ -28,21 +37,24 @@ const HiresDetail = () => {
 
     if (loading) {
         <div className="loading">
-        <h1>Loading</h1>
-      </div>
+            <h1>Loading</h1>
+        </div>
     } else {
         
         return (
             <section className='hiresdetail__section'>
-                <Link to='/hires'>
-                    Back to all vans
+                <Link
+                    to='..'
+                    relative='path'
+                >
+                   &larr; <span>Back to all vans</span>
                 </Link>
                 <div className="hiresdetail__container">
                     <div className="hiresdetail__column">
                         <img className="hiresdetail__image" src={data.imageUrl} alt="" />
                     </div>
                     <div className="hiresdetail__content">
-                        <i>{data.type}</i>
+                        <i className='hires_btn' style={{backgroundColor: colors(data.type)}}>{data.type}</i>
                         <h2>{data.name}</h2>
                         <p>{data.description}</p>
                         <Link to='/' >Rent this van</Link>
