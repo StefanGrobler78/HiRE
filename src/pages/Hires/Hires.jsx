@@ -1,12 +1,14 @@
 import { Link, useSearchParams } from 'react-router-dom'
 import './Hires.css'
 import React, { useState } from 'react'
+import { getData } from '../../api.js'
 
 const Hires = () => {
     const [searchParams, setSearchParams] = useSearchParams()
-    const typeFilter = searchParams.get("type") 
-    console.log(searchParams.toString());   
+    const typeFilter = searchParams.get("type")   
     const [vans, setVans] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     const colors = (type) => {
         if (type === "simple") {
@@ -19,9 +21,21 @@ const Hires = () => {
     }
 
     React.useEffect(() => {
-      fetch("api/vans")
-      .then(res => res.json())
-      .then((data) => setVans(data.vans))
+      async function loadHires () {
+        setLoading(true)
+        try {
+            const data = await getData()
+            setVans(data.vans)
+        } catch (error) {
+            console.log(error);
+            setError(error)
+        } finally{
+            setLoading(false)
+        }
+        
+        setLoading(false)
+      }
+      loadHires()
     }, [])
 
     const filteredTypes = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter) : vans
@@ -30,6 +44,14 @@ const Hires = () => {
             van
         )
     })
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
+    
+    if( error ) {
+        return <h1>There was an error: {error.message}</h1>
+    }
    
   return (
     <section className='hires__section'>
@@ -65,12 +87,8 @@ const Hires = () => {
                     className='hires__filter-link' 
                     onClick={() => {setSearchParams({})}}>
                         Clear Filter
-                    </button> : null
-}
-                {/* <Link to="?type=simple" className='hires__filter-links'>Simple</Link>
-                <Link to='?type=luxury' className='hires__filter-links' >Luxury</Link>
-                <Link to='?type=rugged' className='hires__filter-links' >Rugged</Link>
-                <Link to='.' className='hires__filter-link' >Clear filters</Link> */}
+                    </button> : null            
+                    }
             </div>
             <div className="hires__content-container">
                 {
@@ -114,5 +132,6 @@ const Hires = () => {
     </section>
   )
 }
+
 
 export default Hires
