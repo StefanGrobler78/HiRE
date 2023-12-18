@@ -1,9 +1,11 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import './HiresDetail.css'
 import React, { useState } from 'react';
 
 const HiresDetail = () => {
     const params = useParams()
+    const location = useLocation()
+    console.log(location);
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -40,14 +42,15 @@ const HiresDetail = () => {
             <h1>Loading</h1>
         </div>
     } else {
-        
+        const search = location.state?.search || ""
+        const type = location.state?.type || "all"
         return (
             <section className='hiresdetail__section'>
                 <Link
-                    to='..'
+                    to={`..${search}`}
                     relative='path'
                 >
-                   &larr; <span>Back to all vans</span>
+                   &larr; <span>Back to {type} vans</span>
                 </Link>
                 <div className="hiresdetail__container">
                     <div className="hiresdetail__column">

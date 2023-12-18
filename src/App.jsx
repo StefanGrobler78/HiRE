@@ -18,6 +18,7 @@ import HostVanDetail from './pages/Host/HostVanDetail.jsx'
 import HostVanInfo from './pages/Host/HostVanInfo.jsx'
 import HostVanPricing from './pages/Host/HostVanPricing.jsx'
 import HostVanPhotos from './pages/Host/HostVanPhotos.jsx'
+import Nopage from './pages/NoPage/Nopage.jsx'
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                     <Route path='photos' element={<HostVanPhotos />} />
                   </Route>
                 </Route>
+                <Route path='*' element={<Nopage />} />
               </Route>
             </Routes>
           {/* <Footer /> */}

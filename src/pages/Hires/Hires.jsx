@@ -4,18 +4,9 @@ import React, { useState } from 'react'
 
 const Hires = () => {
     const [searchParams, setSearchParams] = useSearchParams()
-    let typeFilter = searchParams.get("type")    
+    const typeFilter = searchParams.get("type") 
+    console.log(searchParams.toString());   
     const [vans, setVans] = useState([])
-
-    // const selected = (typeFilter) => {
-    //     if (typeFilter === "simple") {
-    //         return "red"
-    //     }else if (typeFilter === "luxury") {
-    //         return "blue"
-    //     }else if(typeFilter ==="rugged") {
-    //         return "green"
-    //     }
-    // }
 
     const colors = (type) => {
         if (type === "simple") {
@@ -32,6 +23,7 @@ const Hires = () => {
       .then(res => res.json())
       .then((data) => setVans(data.vans))
     }, [])
+
     const filteredTypes = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter) : vans
     const vanElements = filteredTypes.map((van)=> {
         return(
@@ -85,7 +77,7 @@ const Hires = () => {
                     vanElements.map((van) => {
                         return(
                             <div key={van.id}>
-                                <Link className='card-link' to={van.id} state={{type: typeFilter}}>
+                                <Link className='card-link' to={van.id} state={{ search: `?${searchParams.toString()}`, type: typeFilter }}>
                                     <div className="hires__card">
                                         <img className='hires__card-image' src={van.imageUrl} alt="title" width='100%' />
                                         <div className="hires__card-body">
