@@ -1,13 +1,13 @@
 import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
 import './Hires.css'
-import { getData } from '../../api.js'
+import { getVans } from '../../api'
 
 export function loader() {
-    return  getData()
+    return  getVans()
 }
 console.log(loader());
 export default function Hires() {
-    const vans = useLoaderData().vans
+    const vans = useLoaderData()
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get("type")  
 

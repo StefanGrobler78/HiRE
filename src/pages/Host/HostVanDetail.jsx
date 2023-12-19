@@ -1,32 +1,16 @@
-import { useEffect, useState } from "react"
-import { Link, NavLink, Outlet, useParams } from "react-router-dom"
+import { Link, NavLink, Outlet,  useLoaderData } from "react-router-dom"
 import { FaChevronLeft } from "react-icons/fa6";
+import { getHostVans } from "../../api";
+import { requireAuth } from "../../utils.js";
+
+export async function loader({ params }) {
+  await requireAuth()
+  return getHostVans(params.id)
+}
 
 const HostVanDetail = () => {
-  const params = useParams()
-  const [data, setData] = useState([])
-  const [loading, isLoading] = useState(true)
+  const data = useLoaderData()
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const req = await fetch(`/api/vans/${params.id}`)
-        const res = await req.json()
-        setData(res.vans)
-        isLoading(false)
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  fetchData();
-  },[params.id])
-  if (loading) {
-    return (
-      <div className="loading">
-        <h1>Loading</h1>
-      </div>
-    )
-  }else{
     const activeStyles = {textDecoration: 'underline', fontWeight: 'Bold', color: '#109876'}
     const colors = (type) => {
       if (type === "simple") {
@@ -37,6 +21,7 @@ const HostVanDetail = () => {
          return "green"
       }
   }
+
     return (
       <div>
         <h1>Van List Details</h1>
@@ -68,7 +53,5 @@ const HostVanDetail = () => {
       </div>
     )
   }
-  
-}
 
 export default HostVanDetail

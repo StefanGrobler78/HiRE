@@ -1,8 +1,15 @@
-import React from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { useLoaderData } from "react-router-dom"
+
+export function loader({ request }) {
+    return new URL(request.url).searchParams.get("message")
+}
 
 export default function Login() {
-    const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
+    const [loginFormData, setLoginFormData] = useState({ email: "", password: "" })
+    const message = useLoaderData()
+    console.log(message);
+
 
     function handleSubmit(e) {
         e.preventDefault()

@@ -1,13 +1,13 @@
-import { Link, useParams, useLocation } from 'react-router-dom'
+import { Link, useLocation, useLoaderData } from 'react-router-dom'
 import './HiresDetail.css'
-import React, { useState } from 'react';
+import { getVans } from '../../api';
 
+export function loader ({ params }) {
+    return getVans(params.id)
+}
 const HiresDetail = () => {
-    const params = useParams()
     const location = useLocation()
-    console.log(location);
-    const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const data = useLoaderData()
 
     const colors = (type) => {
         if (type === "simple") {
@@ -18,32 +18,8 @@ const HiresDetail = () => {
            return "green"
         }
     }
-
-    React.useEffect(() => {
-        async function fetchData() {
-            try{
-                const res = await fetch(`/api/vans/${params.id}`)
-                const data = await res.json()
-                setData(data.vans)
-                setLoading(false)
-
-            } catch(error) {
-                console.log(error)
-            }
-            
-        }
-        fetchData() 
-        
-    }, [params.id])
-
-
-    if (loading) {
-        <div className="loading">
-            <h1>Loading</h1>
-        </div>
-    } else {
-        const search = location.state?.search || ""
-        const type = location.state?.type || "all"
+    const search = location.state?.search || ""
+    const type = location.state?.type || "all"
         return (
             <section className='hiresdetail__section'>
                 <Link
@@ -54,7 +30,7 @@ const HiresDetail = () => {
                 </Link>
                 <div className="hiresdetail__container">
                     <div className="hiresdetail__column">
-                        <img className="hiresdetail__image" src={data.imageUrl} alt="" />
+                        <img className="hiresdetail__image" src={data.imageUrl} alt={data.name} />
                     </div>
                     <div className="hiresdetail__content">
                         <i className='hires_btn' style={{backgroundColor: colors(data.type)}}>{data.type}</i>
@@ -64,15 +40,6 @@ const HiresDetail = () => {
                     </div>
                 </div>
             </section>
-          )
-
-
-    }
-
-
-
-    
-
+    )
 }
-
 export default HiresDetail
