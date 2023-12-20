@@ -1,6 +1,6 @@
 import { Link, useLocation, useLoaderData } from 'react-router-dom'
 import './HiresDetail.css'
-import { getVans } from '../../api';
+import { getVans } from '../../contstants/api';
 
 export function loader ({ params }) {
     return getVans(params.id)

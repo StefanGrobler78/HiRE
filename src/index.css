@@ -18,6 +18,9 @@
 .layout__container{
   min-height: calc(100vh - 6rem);
 }
+.red {
+  color: red;
+}
 a {
   font-weight: 500;
   color: var(--clr-dark);

@@ -1,9 +1,10 @@
 import { Link, NavLink, Outlet,  useLoaderData } from "react-router-dom"
 import { FaChevronLeft } from "react-icons/fa6";
-import { getHostVans } from "../../api";
-import { requireAuth } from "../../utils.js";
+import { getHostVans } from "../../contstants/api.js";
+import { requireAuth } from "../../contstants/utils.js";
 
-export async function loader({ params }) {
+// eslint-disable-next-line react-refresh/only-export-components
+export async function loader_hvd({ params }) {
   await requireAuth()
   return getHostVans(params.id)
 }
